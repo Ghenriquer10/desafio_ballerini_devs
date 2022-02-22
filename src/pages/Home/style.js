@@ -20,7 +20,7 @@ export const StartNow = styled.div`
         max-width: 400px;
         margin-bottom: 20px;
         font-size: 2.5em;
-        opacity: 0.9;
+        opacity: 0.5;
     }
     
     p{

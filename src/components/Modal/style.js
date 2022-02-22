@@ -13,16 +13,26 @@ export const Background = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  width: 800px;
-  height: 500px;
+  width: 500px;
+  height: 700px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   position: relative;
   z-index: 10;
   border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #4B4746;
+
+    h1{
+      color: #27ae60;
+      font-size: 2.3em;
+      margin-top: 50px;
+    }
+
+    label{
+      border: 1px solid red;
+    }
 `;
 
 export const ModalImg = styled.img`
@@ -58,4 +68,10 @@ export const CloseModalButton = styled(MdClose)`
   width: 32px;
   height: 32px;
   padding: 0;
+  color: #27ae60;
+
+  &:hover{
+    transition: all 1s;
+    color: #FFF;
+  }
 `;

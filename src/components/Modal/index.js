@@ -1,14 +1,13 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import * as C from './style';
 import { useSpring, animated } from 'react-spring';
-import backphot from '../../assets/modal.jpg'
 
 export const ModalButton = ({ showModal, setShowModal }) => {
     const modalRef = useRef();
   
     const animation = useSpring({
       config: {
-        duration: 1250
+        duration: 550
       },
       opacity: showModal ? 1 : 0,
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
@@ -44,11 +43,18 @@ export const ModalButton = ({ showModal, setShowModal }) => {
           <C.Background onClick={closeModal} ref={modalRef}>
             <animated.div style={animation}>
               <C.ModalWrapper showModal={showModal}>
-                <C.ModalImg src={backphot} alt='camera' />
                 <C.ModalContent>
-                  <h1>Are you ready?</h1>
-                  <p>Get exclusive access to our next launch.</p>
-                  <button>Join Now</button>
+                  <h1>Adicionar desenvolvedor</h1>
+                  <label>Nome:</label>
+                  <input placeholder='Nome'/>
+                  <label>Avatar:</label>
+                  <input placeholder='Link da sua foto'/>
+                  <label>Cargo:</label>
+                  <input placeholder='Cargo'/>
+                  <label>Github:</label>
+                  <input placeholder='Link do seu perfil'/>
+                  <label>Linkedin</label>
+                  <input placeholder='Link do seu perfil'/>
                 </C.ModalContent>
                 <C.CloseModalButton
                   aria-label='Close modal'
