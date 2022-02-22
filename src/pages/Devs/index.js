@@ -1,8 +1,8 @@
 import * as C from './style'
 export default function Devs(){
     return(
-        <div>
+        <C.Container>
             Devs
-        </div>
+        </C.Container>
     )
 }

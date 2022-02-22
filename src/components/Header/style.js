@@ -11,11 +11,11 @@ export const Social = styled.div`
     display: flex;
     align-items: center;
     min-width: 40%;
-    justify-content: space-around;
-    
+    margin-left: 80px ;
     & .icon-fa{
         background-color: #1d1d1d;
         color: #27AE60;
+        margin-right: 20px;
     }
     `;
 
