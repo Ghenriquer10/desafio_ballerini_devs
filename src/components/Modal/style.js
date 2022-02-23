@@ -10,6 +10,7 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 `;
 
 export const ModalWrapper = styled.div`
@@ -23,41 +24,76 @@ export const ModalWrapper = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   background-color: #4B4746;
-
-    h1{
-      color: #27ae60;
-      font-size: 2.3em;
-      margin-top: 50px;
-    }
-
-    label{
-      border: 1px solid red;
-    }
-`;
+  border: 2px solid green;
+  
+  h1{
+    color: #27ae60;
+    font-size: 2.0em;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  `;
 
 export const ModalImg = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 10px 0 0 10px;
   background: #000;
-`;
+  `;
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   line-height: 1.8;
   color: #141414;
-  p {
-    margin-bottom: 1rem;
+  height: 100%;
+
+  form{
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
   }
+  
   button {
     padding: 10px 24px;
     background: #141414;
     color: #fff;
     border: none;
   }
+
+  && input{
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 80%;
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 3px;
+  }
+`;
+
+export const ButtonCancel = styled.div`
+  background-color: red;
+  width: 30%;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+`;
+
+export const Register = styled.button.attrs({
+  type: "submit"
+})`
+  background-color: green;
+  width: 30%;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
 `;
 
 export const CloseModalButton = styled(MdClose)`
