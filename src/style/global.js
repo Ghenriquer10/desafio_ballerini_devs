@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import back from '../assets/backg.png'
 
 export default createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Overpass&display=swap');
-
     *{
         padding: 0;
         margin: 0;

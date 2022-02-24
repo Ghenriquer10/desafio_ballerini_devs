@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md';
 export const Background = styled.div`
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -23,8 +23,8 @@ export const ModalWrapper = styled.div`
   z-index: 10;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: #4B4746;
-  border: 2px solid green;
+  background-color: #1F1C1B;
+  border: 5px solid green;
   
   h1{
     color: #27ae60;
@@ -47,25 +47,23 @@ export const ModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   line-height: 1.8;
-  color: #141414;
   height: 100%;
+  
+  p{
+    margin: 5px 0;
+    color: white;
+    margin-top: -10px;
+  }
 
   form{
     display: flex;
     align-items: center;
-    border: 1px solid red;
     justify-content: center;
     flex-direction: column;
     width: 100%;
   }
   
-  button {
-    padding: 10px 24px;
-    background: #141414;
-    color: #fff;
-    border: none;
-  }
-
+  
   && input{
     align-items: center;
     justify-content: center;
@@ -76,7 +74,7 @@ export const ModalContent = styled.div`
     margin-bottom: 10px;
     border-radius: 3px;
   }
-`;
+  `;
 
 export const ButtonCancel = styled.div`
   background-color: red;
@@ -94,7 +92,7 @@ export const Register = styled.button.attrs({
   text-align: center;
   color: #fff;
   cursor: pointer;
-`;
+  `;
 
 export const CloseModalButton = styled(MdClose)`
   cursor: pointer;
@@ -105,9 +103,25 @@ export const CloseModalButton = styled(MdClose)`
   height: 32px;
   padding: 0;
   color: #27ae60;
-
+  
   &:hover{
     transition: all 1s;
     color: #FFF;
   }
-`;
+  `;
+
+export const ButtonsDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  height: 40px;
+
+  && button {
+      width: 30%;
+      padding: 4px;
+      background: green;
+      color: #fff;
+      border: none;
+    }
+  `;
