@@ -1,12 +1,14 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef } from 'react';
 import * as C from './style';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
 import { useSpring, animated } from 'react-spring';
 import {useForm} from 'react-hook-form'
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import {useHistory} from 'react-router-dom';
 
 export const ModalButton = ({ showModal, setShowModal }) => {
 
+    let history = useHistory();
     const modalRef = useRef();
     
     const animation = useSpring({
@@ -22,25 +24,7 @@ export const ModalButton = ({ showModal, setShowModal }) => {
         setShowModal(false);
       }
     };
-    
-    const keyPress = useCallback(
-      e => {
-        if (e.key === 'Escape' && showModal) {
-          setShowModal(false);
-        }
-      },
-      [setShowModal, showModal]
-      );
-      
-      useEffect(
-        () => {
-          document.addEventListener('keydown', keyPress);
-          return () => document.removeEventListener('keydown', keyPress);
-        },
-        [keyPress]
-        );
 
-        
         const schema = yup.object().shape({
           nameDev: yup.string().required("Digite um nome"),
           photo: yup.string().required("Link do seu avatar"),
@@ -49,15 +33,17 @@ export const ModalButton = ({ showModal, setShowModal }) => {
           linkGithub: yup.string()
         })
         
-        const {register, handleSubmit, formState:{ errors }} = useForm({
+        const {register,reset, handleSubmit, formState:{ errors }} = useForm({
           resolver: yupResolver(schema),
         });
 
-        const addDev = (data, e) => {
+        const addDev = (data) => {
           console.log(data);
-          e.target.reset()
+          reset();
+          setShowModal(false)
+          history.push('/devs');
         }
-    
+        
     return (
       <>
         {showModal ? (
@@ -77,9 +63,7 @@ export const ModalButton = ({ showModal, setShowModal }) => {
                     <input type="text" name='linkGithub' {...register('linkGithub')} placeholder='Link Github'/>
                     <p>{errors.linkGithub?.message}</p>
                     <C.ButtonsDiv>
-                      <C.ButtonCancel className='buttons' aria-label='Close modal'
-                        onClick={() => setShowModal(prev => !prev)}
-                        >
+                      <C.ButtonCancel className='buttons' aria-label='Close modal' onClick={() => setShowModal(prev => !prev)}>
                         Cancelar
                       </C.ButtonCancel>
                       <button type='submit'>Cadastrar</button>

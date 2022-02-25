@@ -31,7 +31,7 @@ export const StartNow = styled.div`
     }
 `;
 
-export const Button = styled.button`
+export const Button = styled.div`
         color: #fff;
         background-color: #27ae06;
         padding: 10px 60px;
@@ -40,6 +40,7 @@ export const Button = styled.button`
         margin-right: 220px;
         margin-top: 60px;
         cursor: pointer;
+        width: 200px;
     
     &:hover{
         transition: all 1s;

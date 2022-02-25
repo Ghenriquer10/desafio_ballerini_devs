@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
-export const Container = styled.body`
-
+import backClean from '../../assets/bgclean.png'
+export const Container = styled.div`
+    background-image: url(${backClean});
 `;
