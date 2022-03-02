@@ -15,7 +15,6 @@ export default function Devs(){
     return(
         <C.Container>
             <ModalButton showModal={showModal} setShowModal={setShowModal} />
-            Devs
             <button onClick={openModal}>
                 Adiconar dev
             </button>

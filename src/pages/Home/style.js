@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    min-height: 600px;
-    max-width: 100%;
+    height: 600px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    margin-top: -50px;
 `;
 
 export const StartNow = styled.div`
@@ -29,7 +30,7 @@ export const StartNow = styled.div`
         color: #a9a9a9;
         margin-bottom: 10px;
     }
-`;
+    `;
 
 export const Button = styled.div`
         color: #fff;
@@ -41,10 +42,15 @@ export const Button = styled.div`
         margin-top: 60px;
         cursor: pointer;
         width: 200px;
-    
-    &:hover{
-        transition: all 1s;
-        background-color: #fff;
-        color:#27ae06;
-    }
-`;
+        text-align: center;
+        
+        &:hover{
+            transition: all 1s;
+            background-color: #fff;
+            color:#27ae06;
+        }
+        `;
+
+export const Dev = styled.div`
+
+`

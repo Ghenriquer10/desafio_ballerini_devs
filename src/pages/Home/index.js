@@ -1,5 +1,6 @@
 import * as C from './style';
 import { useHistory} from 'react-router-dom'
+import dev from '../../assets/developer.svg'
 
 export default function Home(){
 
@@ -16,6 +17,9 @@ export default function Home(){
                 <p>Nao importa se front ou back end,  fazer networking e muito importante. Faça parte da maior comunidade de desenvolvedores brasileiros.</p>
                 <C.Button onClick={handleDev}>Entrar</C.Button>
             </C.StartNow>
+            <C.Dev>
+                <img src={dev} alt='developer'/>
+            </C.Dev>
         </C.Container>
     )
 }

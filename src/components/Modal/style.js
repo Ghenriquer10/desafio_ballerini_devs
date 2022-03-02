@@ -14,8 +14,9 @@ export const Background = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
+border: 1px solid red;
   width: 500px;
-  height: 700px;
+  height: 500px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -25,7 +26,8 @@ export const ModalWrapper = styled.div`
   margin-bottom: 10px;
   background-color: #1F1C1B;
   border: 5px solid green;
-  
+  margin-top: -100px;
+
   h1{
     color: #27ae60;
     font-size: 2.0em;
@@ -35,19 +37,11 @@ export const ModalWrapper = styled.div`
   }
   `;
 
-export const ModalImg = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px 0 0 10px;
-  background: #000;
-  `;
-
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 1.8;
-  height: 100%;
   
   p{
     margin: 5px 0;

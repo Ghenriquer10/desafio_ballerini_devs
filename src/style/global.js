@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import back from '../assets/backg.png'
+import back from '../assets/bgclean.png'
 
 export default createGlobalStyle`
     *{
