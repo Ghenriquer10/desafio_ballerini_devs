@@ -78,16 +78,6 @@ export const ButtonCancel = styled.div`
   cursor: pointer;
 `;
 
-export const Register = styled.button.attrs({
-  type: "submit"
-})`
-  background-color: green;
-  width: 30%;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  `;
-
 export const CloseModalButton = styled(MdClose)`
   cursor: pointer;
   position: absolute;
@@ -97,11 +87,7 @@ export const CloseModalButton = styled(MdClose)`
   height: 32px;
   padding: 0;
   color: #27ae60;
-  
-  &:hover{
-    transition: all 1s;
-    color: #FFF;
-  }
+
   `;
 
 export const ButtonsDiv = styled.div`
@@ -114,8 +100,38 @@ export const ButtonsDiv = styled.div`
   && button {
       width: 30%;
       padding: 4px;
-      background: green;
       color: #fff;
       border: none;
+      background-color: #27ae06;
     }
+  `;
+
+  export const Loading = styled.div`
+    color: white;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    color: green;
+    font-size: 1.5em;
+
+    @keyframes loadingSvg {
+      from{
+          transform: rotate(0deg);
+          
+      }
+
+      to{
+          transform: rotate(360deg);
+      }
+    }
+
+    && svg{
+      color: green;
+      font-size: 1.3em;
+      animation-name: loadingSvg;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      margin-left: 10px;
+    }
+
   `;

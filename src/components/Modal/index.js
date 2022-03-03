@@ -1,17 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import * as C from './style';
-import * as yup from 'yup';
-import {yupResolver} from '@hookform/resolvers/yup';
 import { useSpring, animated } from 'react-spring';
-import {useForm} from 'react-hook-form'
-import {useHistory} from 'react-router-dom';
+import {FiLoader} from 'react-icons/fi'
 
 export const ModalButton = ({ showModal, setShowModal }) => {
 
-    let history = useHistory();
-    const modalRef = useRef();
-    
-    const animation = useSpring({
+  const [name, setName] = useState('');
+  const [photo, setPhoto] = useState('');
+  const [office, setOffice] = useState('');
+  const [linkLikedin, setLinkLinkedin] = useState('');
+  const [linkGithub, setLinkGithub] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+
+  const modalRef = useRef();
+
+  const animation = useSpring({
       config: {
         duration: 550
       },
@@ -25,25 +29,38 @@ export const ModalButton = ({ showModal, setShowModal }) => {
       }
     };
 
-        const schema = yup.object().shape({
-          nameDev: yup.string().required("Digite um nome"),
-          photo: yup.string().required("Link do seu avatar"),
-          office: yup.string().required("Digite seu cargo Dev"),
-          linkLikedin: yup.string(),
-          linkGithub: yup.string()
-        })
-        
-        const {register,reset, handleSubmit, formState:{ errors }} = useForm({
-          resolver: yupResolver(schema),
-        });
+    function handleSubmit(e){
+      e.preventDefault()
+      setLoading(true);
 
-        const addDev = (data) => {
-          console.log(data);
-          reset();
-          setShowModal(false)
-          history.push('/devs');
+      if(name && office && linkLikedin && linkGithub){
+        const dataDev = {
+          name: name,
+          photo: photo,
+          office: office,
+          linkLikedin: linkLikedin,
+          linkGithub: linkGithub
         }
-        
+        saveDev(dataDev)
+        console.log(dataDev);
+
+        setShowModal(false);
+        setName('')
+        setPhoto('')
+        setOffice('')
+        setLinkLinkedin('')
+        setLinkGithub('')
+      }
+    }
+    
+    function saveDev(dataDev){
+      let localDevs = JSON.parse(localStorage.getItem('devs')) || [];
+      localDevs.push(dataDev)
+      localStorage.setItem('devs', JSON.stringify(localDevs))
+      setLoading(false)
+      alert('adicionado com sucesso')
+    }
+
     return (
       <>
         {showModal ? (
@@ -51,23 +68,24 @@ export const ModalButton = ({ showModal, setShowModal }) => {
             <animated.div style={animation}>
               <C.ModalWrapper showModal={showModal}>
                 <C.ModalContent>
-                  <form onSubmit={handleSubmit(addDev)}>
+                  <form onSubmit={handleSubmit}>
                     <h1>Adicionar desenvolvedor</h1>
-                    <input type="text" {...register('nameDev')} placeholder='Seu nome'/>
-                    <p>{errors.nameDev?.message}</p>
-                    <input type="text" name='photo' {...register('photo')} placeholder='Link da sua foto'/>
-                    <p>{errors.photo?.message}</p>
-                    <input type="text" name='office' {...register('office')} placeholder='Cargo'/>
-                    <p>{errors.office?.message}</p>
-                    <input type='text' name='linkLikedin' {...register('linkLikedin')} placeholder='Link Linkedin'/>
-                    <input type="text" name='linkGithub' {...register('linkGithub')} placeholder='Link Github'/>
-                    <p>{errors.linkGithub?.message}</p>
+                    <input type="text" placeholder='Seu nome' value={name} onChange={e => setName(e.target.value)} required/>
+                    <input type="text" name='photo'  placeholder='.PNG/.JPG/.JPEG' value={photo} onChange={e => setPhoto(e.target.value)}/>
+                    <input type="text" name='office'  placeholder='Cargo' value={office} onChange={e =>  setOffice(e.target.value)} required/>
+                    <input type='url' name='linkLikedin'  placeholder='Link Linkedin' value={linkLikedin} onChange={e => setLinkLinkedin(e.target.value)} required/>
+                    <input type="url" name='linkGithub'  placeholder='Link Github' value={linkGithub} onChange={e => setLinkGithub(e.target.value)} required/>
                     <C.ButtonsDiv>
                       <C.ButtonCancel className='buttons' aria-label='Close modal' onClick={() => setShowModal(prev => !prev)}>
                         Cancelar
                       </C.ButtonCancel>
                       <button type='submit'>Cadastrar</button>
                     </C.ButtonsDiv>
+                    {loading && 
+                    <C.Loading>
+                      Salvando dev<FiLoader/>
+                    </C.Loading>
+                    }
                   </form>
                 </C.ModalContent>
                 <C.CloseModalButton
