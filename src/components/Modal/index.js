@@ -3,7 +3,7 @@ import * as C from './style';
 import { useSpring, animated } from 'react-spring';
 import {FiLoader} from 'react-icons/fi'
 
-export const ModalButton = ({ showModal, setShowModal }) => {
+export const ModalButton = ({ showModal, setShowModal}) => {
 
   const [name, setName] = useState('');
   const [photo, setPhoto] = useState('');
