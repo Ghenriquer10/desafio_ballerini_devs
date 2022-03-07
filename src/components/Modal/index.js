@@ -38,7 +38,7 @@ export const ModalButton = ({ showModal, setShowModal}) => {
           name: name,
           photo: photo,
           office: office,
-          linkLikedin: linkLikedin,
+          linkLinkedin: linkLikedin,
           linkGithub: linkGithub
         }
         saveDev(dataDev)
