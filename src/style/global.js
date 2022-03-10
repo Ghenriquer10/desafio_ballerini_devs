@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import back from '../assets/bgclean.png'
 
+
 export default createGlobalStyle`
     *{
         padding: 0;
@@ -16,7 +17,7 @@ export default createGlobalStyle`
     body{
         overflow-y: hidden;
         background-image: url(${back});
-        font: 14px 'Overpass', sans-serif;
+        font: 14px 'BhuTuka Expanded One', sans-serif;
         color: #FFFFFF;
         -webkit-font-smoothing: antialiased !important;
         background-repeat: round;

@@ -3,7 +3,9 @@ import { useState, useEffect, useRef } from 'react';
 import {FaLinkedin, FaGithub} from 'react-icons/fa'
 import {AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
 import * as C from './style'
-import { ModalButton } from '../../components/Modal';
+import { ModalButton } from '../../components/ModalButton';
+import { ModalDelete } from '../../components/ModalDelete';
+import { ModalDetails } from '../../components/ModalDetail';
 
 
 export default function Devs(){
@@ -11,7 +13,12 @@ export default function Devs(){
     const [hasDev, setHasDev] = useState(true);
     const [devs, setDevs] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const devStorage = localStorage.getItem('devs')
+    const [showModalDelete, setShowModalDelete] = useState(false);
+    const [modalDetails, setModalDetails] = useState(false);
+    const [devIndex, setDevIndex] = useState(0);
+
+    const devStorage = localStorage.getItem('devs');
+    
     const carousel = useRef(null);
 
     useEffect(() => {
@@ -23,6 +30,17 @@ export default function Devs(){
 
     function openModal(){
         setShowModal(prev => !prev);
+    }
+
+    function openDeleteModal(index){
+        console.log(index);
+        setDevIndex(index)
+        setShowModalDelete(prev => !prev);
+    }
+    function openDetailModal(index){
+        console.log(index);
+        setDevIndex(index)
+        setModalDetails(prev => !prev);
     }
 
     function handleLeft(e){
@@ -38,18 +56,30 @@ export default function Devs(){
     function handleDevDetails(e){
         e.preventDefault();
     }
-       
-    function handleDelete(index){
-        devs.splice(index)
-        localStorage.setItem('devs', JSON.stringify(devs));
-        window.location.reload();
-
-    }
 
     return(
         <C.Container>
             {hasDev && <div>Não há devs cadastrados</div>}
-            <ModalButton showModal={showModal} setShowModal={setShowModal} />
+
+            <ModalButton 
+                showModal={showModal} 
+                setShowModal={setShowModal} 
+            />
+
+            <ModalDelete 
+                showModalDelete={showModalDelete} 
+                setShowModalDelete={setShowModalDelete} 
+                devIndex={devIndex} 
+                devs={devs}
+            />
+
+            <ModalDetails 
+                modalDetails={modalDetails} 
+                setModalDetails={setModalDetails} 
+                devIndex={devIndex}
+                devs={devs}
+            />
+
             <C.AddDev onClick={openModal}>Adiconar dev</C.AddDev>
             {!hasDev &&
             <>
@@ -64,7 +94,6 @@ export default function Devs(){
                                 <C.DevData>
                                     <h1>
                                         {dev.name}
-                                        {index}
                                     </h1>
                                     <p>
                                         {dev.office}
@@ -80,8 +109,8 @@ export default function Devs(){
                                 </C.SocialMedia>
                                 <button onClick={handleDevDetails}>Detalhes</button>
                                 <C.DevsButton>
-                                    <button className='devEdit'>Editar Dev</button>
-                                    <button onClick={() => handleDelete(index)} className='devDelete'>Deletar Dev</button>
+                                    <button onClick={() => openDetailModal(index)} className='devEdit'>Editar Dev</button>
+                                    <button onClick={() => openDeleteModal(index)} className='devDelete'>Deletar Dev</button>
                                 </C.DevsButton>
                             </C.Item>
                         )

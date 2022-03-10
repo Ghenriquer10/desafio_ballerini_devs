@@ -20,7 +20,7 @@ export default function Header(){
            </C.Social>
            <C.Logo>
                <img src={balleriniLogo} alt='logo'/>
-               <h1>Ballerini Devs</h1>
+               <p>Ballerini Devs</p>
            </C.Logo>
        </C.Container> 
     )

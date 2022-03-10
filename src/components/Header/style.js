@@ -25,7 +25,12 @@ export const Logo = styled.div`
     align-items: center;
     min-width: 50%;
 
+    p{
+        font-size: 2.5em;
+    }
+
     img{
-        margin-right: 10px;
+        margin-right: 40px;
+        margin-left: -30px;
     }
 `;
