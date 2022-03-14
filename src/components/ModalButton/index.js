@@ -10,9 +10,9 @@ export const ModalButton = ({ showModal, setShowModal}) => {
   const [office, setOffice] = useState('');
   const [linkLikedin, setLinkLinkedin] = useState('');
   const [linkGithub, setLinkGithub] = useState('');
+  const [devArea, setDevArea] = useState('')
   const [loading, setLoading] = useState(false);
   
-
   const modalRef = useRef();
 
   const animation = useSpring({
@@ -75,11 +75,36 @@ export const ModalButton = ({ showModal, setShowModal}) => {
                     <input type="text" name='office'  placeholder='Cargo' value={office} onChange={e =>  setOffice(e.target.value)} required/>
                     <input type='url' name='linkLikedin'  placeholder='Link Linkedin' value={linkLikedin} onChange={e => setLinkLinkedin(e.target.value)} required/>
                     <input type="url" name='linkGithub'  placeholder='Link Github' value={linkGithub} onChange={e => setLinkGithub(e.target.value)} required/>
+                    
+                    <C.DevType>
+                      <div>
+                        <label for="contactChoice1">Front-end</label>
+                        <input type="radio" id="contactChoice1"
+                        name="contact" value="email"/>
+                      </div>
+                      <div>
+                        <label for="contactChoice2">Back-end</label>
+                        <input type="radio" id="contactChoice2"
+                        name="contact" value="phone"/>
+                      </div>
+                      <div>
+                        <label for="contactChoice3">Full-stack</label>
+                        <input type="radio" id="contactChoice3"
+                        name="contact" value="mail"/>
+                      </div>
+                    </C.DevType>
+
+                    <C.AreaDev>
+                      <textarea value={devArea} onChange={e => setDevArea(e.target.value)}/>
+                    </C.AreaDev>
+
                     <C.ButtonsDiv>
                       <C.ButtonCancel className='buttons' aria-label='Close modal' onClick={() => setShowModal(prev => !prev)}>
                         Cancelar
                       </C.ButtonCancel>
-                      <button type='submit'>Cadastrar</button>
+                      <button type='submit'>
+                        Cadastrar
+                      </button>
                     </C.ButtonsDiv>
                     {loading && 
                     <C.Loading>
@@ -88,10 +113,7 @@ export const ModalButton = ({ showModal, setShowModal}) => {
                     }
                   </form>
                 </C.ModalContent>
-                <C.CloseModalButton
-                  aria-label='Close modal'
-                  onClick={() => setShowModal(prev => !prev)}
-                />
+                
               </C.ModalWrapper>
             </animated.div>
           </C.Background>

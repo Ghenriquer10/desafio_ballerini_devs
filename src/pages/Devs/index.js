@@ -33,12 +33,11 @@ export default function Devs(){
     }
 
     function openDeleteModal(index){
-        console.log(index);
         setDevIndex(index)
         setShowModalDelete(prev => !prev);
     }
+
     function openDetailModal(index){
-        console.log(index);
         setDevIndex(index)
         setModalDetails(prev => !prev);
     }
@@ -95,9 +94,6 @@ export default function Devs(){
                                     <h1>
                                         {dev.name}
                                     </h1>
-                                    <p>
-                                        {dev.office}
-                                    </p>
                                 </C.DevData>
                                 <C.SocialMedia>
                                     <a href={dev.linkGithub}>
@@ -107,7 +103,7 @@ export default function Devs(){
                                         <FaLinkedin/>
                                     </a>
                                 </C.SocialMedia>
-                                <button onClick={handleDevDetails}>Detalhes</button>
+                                    <button onClick={handleDevDetails}>Detalhes</button>
                                 <C.DevsButton>
                                     <button onClick={() => openDetailModal(index)} className='devEdit'>Editar Dev</button>
                                     <button onClick={() => openDeleteModal(index)} className='devDelete'>Deletar Dev</button>

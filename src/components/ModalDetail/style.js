@@ -9,11 +9,9 @@ export const DetailsBackground = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 10;
-    border: 1px solid red;
 `;
 
 export const EditWrapper = styled.div`
-    border: 1px solid red;
     height: 300px;
     width: 500px;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
@@ -26,11 +24,12 @@ export const EditWrapper = styled.div`
     background-color: #1F1C1B;
     border: 5px solid green;
     margin-top: -100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 `;
 
 export const DetailContent = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.8;
 `;

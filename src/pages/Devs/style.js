@@ -25,13 +25,13 @@ export const AddDev = styled.div`
     color: #fff;
     text-align: center;
     cursor: pointer;
-
+    
     &:hover{
         transition: all 1s;
         background-color: white;
         color: #27ae60;
     }
-`;
+    `;
 
 export const CarousselContainer = styled.div`
     width: 80vw;
@@ -57,7 +57,6 @@ export const Item = styled.div`
     flex-direction: column;
     background-color: #363636;
     border-radius: 10px;
-    overflow-x: hidden;
     margin: 0 30px;
 
     && button{
