@@ -42,6 +42,10 @@ export default function Devs(){
         setModalDetails(prev => !prev);
     }
 
+    function openEditModal(index){
+        setDevIndex(index)
+    }
+
     function handleLeft(e){
         e.preventDefault()
         carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -50,10 +54,6 @@ export default function Devs(){
     function handleRigth(e){
         e.preventDefault()
         carousel.current.scrollLeft += carousel.current.offsetWidth;
-    }
-
-    function handleDevDetails(e){
-        e.preventDefault();
     }
 
     return(
@@ -103,9 +103,9 @@ export default function Devs(){
                                         <FaLinkedin/>
                                     </a>
                                 </C.SocialMedia>
-                                    <button onClick={handleDevDetails}>Detalhes</button>
+                                    <button onClick={() => openDetailModal(index)}>Detalhes</button>
                                 <C.DevsButton>
-                                    <button onClick={() => openDetailModal(index)} className='devEdit'>Editar Dev</button>
+                                    <button onClick={openEditModal} className='devEdit'>Editar Dev</button>
                                     <button onClick={() => openDeleteModal(index)} className='devDelete'>Deletar Dev</button>
                                 </C.DevsButton>
                             </C.Item>

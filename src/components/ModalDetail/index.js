@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 import * as C from "./style"
+import bloob from '../../assets/Blob 1.png';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-export const ModalDetails = ({modalDetails, setModalDetails}) => {
+export const ModalDetails = ({modalDetails, setModalDetails, devIndex, devs}) => {
 
     const detailRef = useRef();
 
@@ -27,9 +29,32 @@ export const ModalDetails = ({modalDetails, setModalDetails}) => {
                     <animated.div style={animation}>
                         <C.EditWrapper modalDetails={modalDetails}>
                             <C.DetailContent>
-                                kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                                kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                                kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                                <C.Item key={devs[devIndex].name}>
+                                    <C.DivPhoto>
+                                        <C.Photo>
+                                            <img className='devPhoto' src={devs[devIndex].photo} alt="foto do dev"/>
+                                        </C.Photo>
+                                    </C.DivPhoto>
+                                    <C.DevData>
+                                        <h1>
+                                            {devs[devIndex].name}
+                                        </h1>
+                                        <p>{devs[devIndex].radioAreaOffice}</p>
+                                        <p>{devs[devIndex].office}</p>
+                                        <p>{devs[devIndex].devArea}</p>
+                                    </C.DevData>
+                                    <C.SocialMedia>
+                                        <a href={devs[devIndex].linkGithub}>
+                                            <FaGithub/>
+                                        </a>
+                                        <a href={devs[devIndex].linkLinkedin}>
+                                            <FaLinkedin/>
+                                        </a>
+                                    </C.SocialMedia>
+                                    <C.DevsButton>
+                                        <button onClick={closeDetailModal} className='devEdit'>Fechar</button>
+                                    </C.DevsButton>
+                                </C.Item>
                             </C.DetailContent>
                         </C.EditWrapper>
                     </animated.div>

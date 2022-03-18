@@ -13,7 +13,7 @@ export const Background = styled.div`
 
 export const ModalWrapper = styled.div`
   width: 500px;
-  height: 500px;
+  height: 550px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -65,6 +65,7 @@ export const ModalContent = styled.div`
     border: none;
     margin-bottom: 10px;
     border-radius: 3px;
+    text-align: center;
   }
   `;
 
@@ -104,7 +105,15 @@ export const DevType = styled.div`
   }
 `;
 
-export const AreaDev = styled.div``;
+export const AreaDev = styled.div`
+  p{
+    text-align: center;
+    margin-top: 1px;
+  }
+  textarea{
+    padding: 10px;
+  }
+`;
 
 export const ButtonsDiv = styled.div`
   display: flex;

@@ -11,6 +11,7 @@ export const ModalButton = ({ showModal, setShowModal}) => {
   const [linkLikedin, setLinkLinkedin] = useState('');
   const [linkGithub, setLinkGithub] = useState('');
   const [devArea, setDevArea] = useState('')
+  const [radioAreaOffice, setRadioAreaOffice] = useState('')
   const [loading, setLoading] = useState(false);
   
   const modalRef = useRef();
@@ -39,7 +40,9 @@ export const ModalButton = ({ showModal, setShowModal}) => {
           photo: photo,
           office: office,
           linkLinkedin: linkLikedin,
-          linkGithub: linkGithub
+          linkGithub: linkGithub,
+          devArea: devArea,
+          radioAreaOffice: radioAreaOffice
         }
         saveDev(dataDev)
         console.log(dataDev);
@@ -50,6 +53,8 @@ export const ModalButton = ({ showModal, setShowModal}) => {
         setOffice('')
         setLinkLinkedin('')
         setLinkGithub('')
+        setDevArea('')
+        setRadioAreaOffice('')
       }
     }
     
@@ -72,30 +77,27 @@ export const ModalButton = ({ showModal, setShowModal}) => {
                     <h1>Adicionar desenvolvedor</h1>
                     <input type="text" placeholder='Seu nome' value={name} onChange={e => setName(e.target.value)} required/>
                     <input type="text" name='photo'  placeholder='.PNG/.JPG/.JPEG' value={photo} onChange={e => setPhoto(e.target.value)}/>
-                    <input type="text" name='office'  placeholder='Cargo' value={office} onChange={e =>  setOffice(e.target.value)} required/>
                     <input type='url' name='linkLikedin'  placeholder='Link Linkedin' value={linkLikedin} onChange={e => setLinkLinkedin(e.target.value)} required/>
                     <input type="url" name='linkGithub'  placeholder='Link Github' value={linkGithub} onChange={e => setLinkGithub(e.target.value)} required/>
                     
                     <C.DevType>
                       <div>
-                        <label for="contactChoice1">Front-end</label>
-                        <input type="radio" id="contactChoice1"
-                        name="contact" value="email"/>
+                        <label htmlFor="front-end">Front-end</label>
+                        <input type="radio" checked={radioAreaOffice === 'Front-end'} value='Front-end' onClick={e => setRadioAreaOffice(e.target.value)} id="front-end" name="front-end" readOnly/>
                       </div>
                       <div>
-                        <label for="contactChoice2">Back-end</label>
-                        <input type="radio" id="contactChoice2"
-                        name="contact" value="phone"/>
+                        <label htmlFor="back-end">Back-end</label>
+                        <input type="radio" checked={radioAreaOffice === 'Back-end'} value='Back-end' onClick={e => setRadioAreaOffice(e.target.value)} id="back-end" name="back-end" readOnly/>
                       </div>
                       <div>
-                        <label for="contactChoice3">Full-stack</label>
-                        <input type="radio" id="contactChoice3"
-                        name="contact" value="mail"/>
+                        <label htmlFor="full-stack">Full-stack</label>
+                        <input type="radio" checked={radioAreaOffice === 'Full-stack'} value="Full-stack" onClick={e => setRadioAreaOffice(e.target.value)} id="full-stack" name="full-stack" readOnly/>
                       </div>
                     </C.DevType>
-
+                    {radioAreaOffice}
+                    <input type="text" name='office'  placeholder='Senioridade ex: Júnior, Pleno ou Sênior' value={office} onChange={e =>  setOffice(e.target.value)} required/>
                     <C.AreaDev>
-                      <textarea value={devArea} onChange={e => setDevArea(e.target.value)}/>
+                      <textarea value={devArea} onChange={e => setDevArea(e.target.value)} cols="30" rows="5" placeholder='Sobre você:'/>
                     </C.AreaDev>
 
                     <C.ButtonsDiv>
