@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import * as C from './style';
 import { useSpring, animated } from 'react-spring';
 import {FiLoader} from 'react-icons/fi'
+import { toast } from 'react-toastify';
 
 export const ModalButton = ({ showModal, setShowModal}) => {
 
@@ -62,8 +63,8 @@ export const ModalButton = ({ showModal, setShowModal}) => {
       let localDevs = JSON.parse(localStorage.getItem('devs')) || [];
       localDevs.push(dataDev)
       localStorage.setItem('devs', JSON.stringify(localDevs))
+      toast.success('adicionado com sucesso')
       setLoading(false)
-      alert('adicionado com sucesso')
     }
 
     return (
@@ -94,7 +95,6 @@ export const ModalButton = ({ showModal, setShowModal}) => {
                         <input type="radio" checked={radioAreaOffice === 'Full-stack'} value="Full-stack" onClick={e => setRadioAreaOffice(e.target.value)} id="full-stack" name="full-stack" readOnly/>
                       </div>
                     </C.DevType>
-                    {radioAreaOffice}
                     <input type="text" name='office'  placeholder='Senioridade ex: Júnior, Pleno ou Sênior' value={office} onChange={e =>  setOffice(e.target.value)} required/>
                     <C.AreaDev>
                       <textarea value={devArea} onChange={e => setDevArea(e.target.value)} cols="30" rows="5" placeholder='Sobre você:'/>

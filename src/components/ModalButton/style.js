@@ -128,6 +128,7 @@ export const ButtonsDiv = styled.div`
       color: #fff;
       border: none;
       background-color: #27ae06;
+      cursor: pointer;
     }
   `;
 

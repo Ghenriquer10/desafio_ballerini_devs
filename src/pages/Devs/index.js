@@ -6,6 +6,7 @@ import * as C from './style'
 import { ModalButton } from '../../components/ModalButton';
 import { ModalDelete } from '../../components/ModalDelete';
 import { ModalDetails } from '../../components/ModalDetail';
+import { ModalEdit } from '../../components/ModalEdit';
 
 
 export default function Devs(){
@@ -15,6 +16,7 @@ export default function Devs(){
     const [showModal, setShowModal] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
     const [modalDetails, setModalDetails] = useState(false);
+    const [modalEdit, setModalEdit] = useState(false);
     const [devIndex, setDevIndex] = useState(0);
 
     const devStorage = localStorage.getItem('devs');
@@ -44,6 +46,7 @@ export default function Devs(){
 
     function openEditModal(index){
         setDevIndex(index)
+        setModalEdit(prev => !prev)
     }
 
     function handleLeft(e){
@@ -79,10 +82,17 @@ export default function Devs(){
                 devs={devs}
             />
 
+            <ModalEdit
+                modalEdit={modalEdit}
+                setModalEdit={setModalEdit}
+                devIndex={devIndex}
+                devs={devs}
+            />
+
             <C.AddDev onClick={openModal}>Adiconar dev</C.AddDev>
             {!hasDev &&
             <>
-                <button onClick={handleLeft} className='aiButton'><AiOutlineLeft size={50}/></button>
+                <button onClick={handleLeft} className='aiButton'><AiOutlineLeft size={30}/></button>
                 <C.CarousselContainer ref={carousel}>
                     {devs.map((dev, index) => {
                         return(
@@ -105,14 +115,14 @@ export default function Devs(){
                                 </C.SocialMedia>
                                     <button onClick={() => openDetailModal(index)}>Detalhes</button>
                                 <C.DevsButton>
-                                    <button onClick={openEditModal} className='devEdit'>Editar Dev</button>
+                                    <button onClick={() => openEditModal(index)} className='devEdit'>Editar Dev</button>
                                     <button onClick={() => openDeleteModal(index)} className='devDelete'>Deletar Dev</button>
                                 </C.DevsButton>
                             </C.Item>
                         )
                     })}
                     </C.CarousselContainer>
-                    <button onClick={handleRigth} className='aiButton'><AiOutlineRight size={50}/></button>
+                    <button onClick={handleRigth} className='aiButton'><AiOutlineRight size={30}/></button>
                 </>
             }
             </C.Container>

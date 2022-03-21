@@ -11,6 +11,10 @@ export const Container = styled.div`
         margin: 0 30px 100px 30px;
         border: none;
         border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 
@@ -58,6 +62,7 @@ export const Item = styled.div`
     background-color: #363636;
     border-radius: 10px;
     margin: 0 30px;
+    border: 2px solid green;
 
     && button{
         background-color: green;
@@ -71,8 +76,8 @@ export const Item = styled.div`
 
     && button:hover{
         transition: all 1s;
-        background-color: #FFF;
-        color: green;
+        background-color: #00FF7F;
+        color: #FFF;
     }
 `;
 
@@ -122,8 +127,7 @@ export const DevsButton = styled.div`
     margin-top: 5px;
     
     && button{
-        color: black;
-        font-weight: bold;
+        color: #FFF;
     }
 
     && .devEdit{

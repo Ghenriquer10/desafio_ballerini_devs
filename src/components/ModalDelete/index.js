@@ -1,6 +1,7 @@
 import React, {useRef} from 'react'; 
 import * as C from './style';
 import {useSpring, animated} from 'react-spring';
+import { toast } from 'react-toastify';
 
 export const ModalDelete = ({showModalDelete, setShowModalDelete, devIndex, devs}) => {
     const modalDeleteRef = useRef();
@@ -22,7 +23,10 @@ export const ModalDelete = ({showModalDelete, setShowModalDelete, devIndex, devs
       function handleDelete(){
         devs.splice(devIndex)
         localStorage.setItem('devs', JSON.stringify(devs));
-        window.location.reload();
+        toast.error('Desenvolvedor excluído com sucesso!')
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
       }
 
       return(

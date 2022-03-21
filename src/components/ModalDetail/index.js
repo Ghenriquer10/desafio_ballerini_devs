@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 import * as C from "./style"
-import bloob from '../../assets/Blob 1.png';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export const ModalDetails = ({modalDetails, setModalDetails, devIndex, devs}) => {
@@ -36,23 +35,23 @@ export const ModalDetails = ({modalDetails, setModalDetails, devIndex, devs}) =>
                                         </C.Photo>
                                     </C.DivPhoto>
                                     <C.DevData>
-                                        <h1>
-                                            {devs[devIndex].name}
-                                        </h1>
+                                        <p className='devName'>
+                                           {devs[devIndex].name}
+                                        </p>
                                         <p>{devs[devIndex].radioAreaOffice}</p>
                                         <p>{devs[devIndex].office}</p>
                                         <p>{devs[devIndex].devArea}</p>
                                     </C.DevData>
                                     <C.SocialMedia>
                                         <a href={devs[devIndex].linkGithub}>
-                                            <FaGithub/>
+                                            <FaGithub size={20}/>
                                         </a>
                                         <a href={devs[devIndex].linkLinkedin}>
-                                            <FaLinkedin/>
+                                            <FaLinkedin size={20}/>
                                         </a>
                                     </C.SocialMedia>
                                     <C.DevsButton>
-                                        <button onClick={closeDetailModal} className='devEdit'>Fechar</button>
+                                        <button onClick={() => setModalDetails(prev => !prev)} className='devEdit'>Fechar</button>
                                     </C.DevsButton>
                                 </C.Item>
                             </C.DetailContent>

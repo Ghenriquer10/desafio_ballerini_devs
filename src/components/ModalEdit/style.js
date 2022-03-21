@@ -35,85 +35,85 @@ export const DetailContent = styled.div`
     color: #fff;
     height: 100%;
     width: 100%;
-`;
+    `;
 
 export const Item = styled.div`
     width: 100%;
     height: 100%;
-    display: flex;
     align-items: center;
     flex-direction: column;
-`;
-
-export const DivPhoto = styled.div`
-    background-color: black;
-    width: 100%;
+    justify-content: space-around;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    border-radius: 10px;
-`;
-export const Photo = styled.div`
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-top: 90px;
-    border: 1px solid green;
-    
-    img{
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
+    && label{
+        display: flex;
+        justify-content: center;
     }
-`;
+    && input{
+        width: 300px;
+        padding: 7px;
+        border: none;
+        margin-top: 3px;
+        text-align: center;
+    }
+
+    `;
 export const DevData = styled.div`
-    margin-top: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    color: green;
-
-    && .devName{
-        color: white;
-        font-size: 2em;
-    }
-
-    p{
-        color: grey;
-    }
+    color: #C0C0C0;
 `;
 export const SocialMedia = styled.div`
-    width: 15%;
+    width: 30%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
+
     a{
-      color: green;
+        color: green;
     }
+
 `;
+
+export const EditDevType = styled.div`
+  color: #FFF;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+
+  && input[type = radio]{
+      width: 30px;
+  }
+
+  && label{
+    font-weight: bold;
+
+  }
+`;
+
 export const DevsButton = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 10px;
-
+    justify-content: space-around;
+    margin-top: 5px;
     button{
-        padding: 6px;
-        width: 50%;
+        padding: 5px;
+        width: 30%;
         background-color: green;
         border: none;
+        border-radius: 7px;
         cursor: pointer;
-        border-radius: 9px;
-        color: #fff;
+        color: #FFF;
     }
+
     button:hover{
-        transition: 1s all;
-        background-color: white;
-        color: green;
+        transition: all 1s;
+        background-color: #00FF7F;
+        color: #FFF;
     }
 `;
