@@ -1,4 +1,4 @@
-# App básico para um cadastro de Dev's usando o LocalStorage do Google
+# App básico para cadastro de Dev's usando o LocalStorage do Google
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
